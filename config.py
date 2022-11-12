@@ -1,3 +1,4 @@
+# (C) Toby Sear 2022
 # (C) Server Density 2009-2017
 # (C) Datadog, Inc. 2010-2016
 # All rights reserved
@@ -151,7 +152,7 @@ def get_url_endpoint(default_url, endpoint_type='app', cfg_path=None):
     if config.has_option('Main', 'sd_url') and config.get('Main', 'sd_url'):
         url = config.get('Main', 'sd_url')
     elif config.has_option('Main', 'sd_account') and config.get('Main', 'sd_account'):
-        url = 'https://{}.agent.serverdensity.io'.format(config.get('Main', 'sd_account'))
+        url = 'https://{}.local'.format(config.get('Main', 'sd_account'))
     else:
         # Default agent URL
         url = default_url
@@ -416,7 +417,7 @@ def get_config(parse_args=True, cfg_path=None, options=None, can_query_registry=
             agentConfig['sd_url'] = config.get('Main', 'sd_url')
         else:
             # Default agent URL
-            agentConfig['sd_url'] = "https://" + agentConfig['sd_account'] + ".agent.serverdensity.io"
+            agentConfig['sd_url'] = "https://" + agentConfig['sd_account'] + ".local"
 
         if agentConfig['sd_url'].endswith('/'):
             agentConfig['sd_url'] = agentConfig['sd_url'][:-1]
